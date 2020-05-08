@@ -9,9 +9,11 @@ module.exports = {
         rules: [ // 遍历规则
             {
                 test: /\.js$/, // 匹配以.js结尾的文件
-                loader: 'babel-loader', // 使用babel-loader变异
+                loader: 'babel-loader', // 使用babel-loader编译
                 exclude: /node_modules/ // node_module里面的内容不遍历
-            }
+            },
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+            { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }
         ]
     }
 }
