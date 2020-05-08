@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/susy-fly/webpack/issues"
   },
-  "homepage": "https://github.com/susy-fly/webpack#readme"
+  "homepage": "https://github.com/susy-fly/webpack#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  }
 }
