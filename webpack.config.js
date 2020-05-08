@@ -1,3 +1,4 @@
+let HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path') // 引入node内置模块path
 module.exports = {
     entry: './src/main.js', // 入口文件，把src下的main.js编译到出口文件
@@ -18,5 +19,11 @@ module.exports = {
             // limit表示转化base64只在8192字节以下转化，其他情况输出图片 
             { test:/\.(eot|svg|woff|woff2|wtf)$/,use:'url-loader'} // 解析图片
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({ //自动插入到dist目录中
+            template: './index.html', //使用模板
+            filename: 'login.html'   //产出名称(一般不写)
+        })
+    ]
 }
