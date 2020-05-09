@@ -1,6 +1,7 @@
 const path = require('path') // 引入node内置模块path
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 module.exports = {
     mode: 'production',
@@ -39,6 +40,13 @@ module.exports = {
             template: './index.html', //使用模板
             filename: 'login.html'   //产出名称(一般不写)
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new CompressionWebpackPlugin({
+            // asset: '[path].gz[query]', // 目标文件名
+            algorithm: 'gzip', // 使用gzip压缩
+            test: new RegExp('\\.(js|css)$'), // 压缩js与css
+            threshold: 10240, // 资源文件大于10240B=10kB时会被压缩
+            minRatio: 0.8 // 最小压缩比达到0.8时才会被压缩
+        })
     ]
 }
